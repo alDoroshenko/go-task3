@@ -7,11 +7,11 @@ import (
 )
 
 func main() {
-	shapes := make([]shape.Shape, 0, 2)
-	shapes = append(shapes, inputRectangle())
-	shapes = append(shapes, inputCircle())
+	shapes := []shape.Shape{
+		inputRectangle(),
+		inputCircle(),
+	}
 	printShareSquare(shapes)
-
 }
 
 func inputRectangle() shape.Shape {
