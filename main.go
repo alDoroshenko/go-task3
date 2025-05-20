@@ -7,10 +7,11 @@ import (
 )
 
 func main() {
-	rec := inputRectangle()
-	crl := inputCircle()
-	printShareSquare(rec)
-	printShareSquare(crl)
+	shapes := make([]shape.Shape, 0, 2)
+	shapes = append(shapes, inputRectangle())
+	shapes = append(shapes, inputCircle())
+	printShareSquare(shapes)
+
 }
 
 func inputRectangle() shape.Shape {
@@ -35,13 +36,16 @@ func inputCircle() shape.Shape {
 	return shape.NewCircle(radius)
 }
 
-func printShareSquare(share shape.Shape) {
-	switch v := share.(type) {
-	case shape.Rectangle:
-		fmt.Println("Площать прямоугольника", v.Area())
-	case shape.Circle:
-		fmt.Println("Площать окружности", v.Area())
-	default:
-		fmt.Println("unknown")
+func printShareSquare(shapes []shape.Shape) {
+	for _, sh := range shapes {
+		switch v := sh.(type) {
+		case shape.Rectangle:
+			fmt.Println("Площать прямоугольника", v.Area())
+		case shape.Circle:
+			fmt.Println("Площать окружности", v.Area())
+		default:
+			fmt.Println("unknown")
+		}
 	}
+
 }
